@@ -16,6 +16,7 @@ class CreateTokenTypesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
+            $table->boolean('public')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

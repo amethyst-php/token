@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Amethyst\Common\ConfigurableModel;
 use Railken\Lem\Contracts\EntityContract;
 
+/**
+ * @property string $type
+ */
 class Token extends Model implements EntityContract
 {
     use SoftDeletes, ConfigurableModel;
@@ -28,5 +31,13 @@ class Token extends Model implements EntityContract
     public function type()
     {
         return $this->belongsTo(TokenType::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function tokenizable()
+    {
+        return $this->morphTo();
     }
 }

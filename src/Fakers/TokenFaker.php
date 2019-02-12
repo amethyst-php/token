@@ -18,6 +18,8 @@ class TokenFaker extends Faker
         $bag = new Bag();
         $bag->set('token', 'abc');
         $bag->set('type', TokenTypeFaker::make()->parameters()->toArray());
+        $bag->set('tokenizable_type', \Railken\Amethyst\Models\User::class);
+        $bag->set('tokenizable', UserFaker::make()->parameters()->toArray());
 
         return $bag;
     }

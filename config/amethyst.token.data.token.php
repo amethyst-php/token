@@ -11,4 +11,11 @@ return [
     'authorizer' => Railken\Amethyst\Authorizers\TokenAuthorizer::class,
     'faker'      => Railken\Amethyst\Fakers\TokenFaker::class,
     'manager'    => Railken\Amethyst\Managers\TokenManager::class,
+    'attributes' => [
+        'tokenizable' => [
+            'options' => [
+                Railken\Amethyst\Models\User::class => Railken\Amethyst\Managers\UserManager::class,
+            ],
+        ],
+    ],
 ];

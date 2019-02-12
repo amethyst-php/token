@@ -17,7 +17,8 @@ class CreateTokensTable extends Migration
             $table->string('token');
             $table->integer('type_id')->unsigned();
             $table->foreign('type_id')->references('id')->on(COnfig::get('amethyst.token.data.token-type.table'));
-
+            $table->string('tokenizable_type');
+            $table->integer('tokenizable_id')->unsigend();
             $table->timestamps();
             $table->softDeletes();
         });
