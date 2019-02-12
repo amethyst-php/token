@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Config;
 use Railken\Amethyst\Api\Http\Controllers\RestManagerController;
 use Railken\Amethyst\Api\Http\Controllers\Traits as RestTraits;
 use Railken\Amethyst\Managers\TokenManager;
-use Railken\Amethyst\Models\User;
 
 class TokensController extends RestManagerController
 {
@@ -29,7 +28,6 @@ class TokensController extends RestManagerController
         parent::__construct();
 
         $this->middleware(function ($request, $next) {
-
             // Cannot create new types and tokenizable
             $request->request->remove('type');
             $request->request->remove('tokenizable');
@@ -37,7 +35,7 @@ class TokensController extends RestManagerController
             $request->request->remove('tokenizable_type');
 
             $request->request->add([
-                'tokenizable_type' => User::class,
+                'tokenizable_type' => Config::get('auth.providers.users.model'),
                 'tokenizable_id'   => $this->getUser()->id,
             ]);
 
@@ -64,7 +62,7 @@ class TokensController extends RestManagerController
                 Config::get('amethyst.token.data.token.table').'.type_id'
             )
             ->where('tt.public', 1)
-            ->where('tokenizable_type', User::class)
+            ->where('tokenizable_type', Config::get('auth.providers.users.model'))
             ->where('tokenizable_id', $this->getUser()->id);
     }
 }

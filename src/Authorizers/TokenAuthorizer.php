@@ -41,7 +41,7 @@ class TokenAuthorizer extends Authorizer
 
         if ($parameters->get('type')) {
             $type = (object) $parameters->get('type');
-        }else if ($parameters->get('type_id')) {
+        } elseif ($parameters->get('type_id')) {
             $typeManager = $this->getManager()->getAttributes()->filter(function ($attribute) {
                 return $attribute->getName() === 'type_id';
             })->first()->getRelationManager($entity);

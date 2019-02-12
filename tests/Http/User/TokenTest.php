@@ -35,6 +35,31 @@ class TokenTest extends BaseTest
      */
     protected $route = 'user.token';
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        Config::set(['amethyst.authentication.entity' => User::class]);
+        Config::set(['auth.providers.users.model' => User::class]);
+
+        Config::set('amethyst.token.data.token.attributes.tokenizable.options.'.User::class, \Railken\Amethyst\Managers\UserManager::class);
+
+        $this->artisan('passport:install');
+        $this->artisan('amethyst:user:install');
+
+        $response = $this->post(route('app.auth.basic'), [
+            'username' => 'admin@admin.com',
+            'password' => 'vercingetorige',
+        ]);
+
+        $response->assertStatus(200);
+        $access_token = json_decode($response->getContent())->data->access_token;
+
+        $this->withHeaders([
+            'Authorization' => 'Bearer '.$access_token,
+        ]);
+    }
+
     /**
      * @return array
      */
@@ -46,41 +71,8 @@ class TokenTest extends BaseTest
 
         $parameters->remove('type');
         $parameters->set('type_id', $type->id);
+
         return $parameters->toArray();
-    }
-
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        config(['amethyst.authentication.entity' => User::class]);
-        Config::set(['amethyst.authentication.entity' => User::class]);
-        config(['auth.providers.users.model' => Config::get('amethyst.authentication.entity')]);
-
-
-        $this->artisan('passport:install');
-        $this->artisan('amethyst:user:install');
-
-        $response = $this->post(route('app.auth.basic'), [
-            'username' => 'admin@admin.com',
-            'password' => 'vercingetorige',
-        ]);
-
-
-        $response->assertStatus(200);
-        $access_token = json_decode($response->getContent())->data->access_token;
-
-        $this->withHeaders([
-            'Authorization' => 'Bearer '.$access_token,
-        ]);
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return array_merge(parent::getPackageProviders($app), [
-            \Railken\Amethyst\Providers\AuthenticationServiceProvider::class
-        ]);
     }
 
     public function testPermissions()
@@ -88,5 +80,12 @@ class TokenTest extends BaseTest
         $routeName = $this->getRoute();
 
         $this->callAndTest('POST', route($routeName.'.create'), $this->getFakerParameters(0), Response::HTTP_BAD_REQUEST);
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return array_merge(parent::getPackageProviders($app), [
+            \Railken\Amethyst\Providers\AuthenticationServiceProvider::class,
+        ]);
     }
 }
