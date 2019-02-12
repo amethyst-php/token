@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Amethyst\Common\ConfigurableModel;
 use Railken\Lem\Contracts\EntityContract;
 
-class Token extends Model implements EntityContract
+class TokenType extends Model implements EntityContract
 {
     use SoftDeletes, ConfigurableModel;
 
@@ -18,15 +18,7 @@ class Token extends Model implements EntityContract
      */
     public function __construct(array $attributes = [])
     {
-        $this->ini('amethyst.token.data.token');
+        $this->ini('amethyst.token.data.token-type');
         parent::__construct($attributes);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function type()
-    {
-        return $this->belongsTo(TokenType::class);
     }
 }

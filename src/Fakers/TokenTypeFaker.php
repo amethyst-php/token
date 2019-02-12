@@ -6,7 +6,7 @@ use Faker\Factory;
 use Railken\Bag;
 use Railken\Lem\Faker;
 
-class TokenFaker extends Faker
+class TokenTypeFaker extends Faker
 {
     /**
      * @return \Railken\Bag
@@ -16,8 +16,8 @@ class TokenFaker extends Faker
         $faker = Factory::create();
 
         $bag = new Bag();
-        $bag->set('token', 'abc');
-        $bag->set('type', TokenTypeFaker::make()->parameters()->toArray());
+        $bag->set('name', $faker->name);
+        $bag->set('description', $faker->text);
 
         return $bag;
     }
