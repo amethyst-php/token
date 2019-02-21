@@ -5,6 +5,6 @@ return [
     'controller' => Railken\Amethyst\Http\Controllers\User\TokensController::class,
     'router'     => [
         'as'     => 'token.',
-        'prefix' => '/user/tokens',
+        'prefix' => '/tokens',
     ],
 ];
