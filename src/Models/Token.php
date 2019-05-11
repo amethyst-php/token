@@ -32,7 +32,7 @@ class Token extends Model implements EntityContract
      */
     public function type(): BelongsTo
     {
-        return $this->belongsTo(TokenType::class);
+        return $this->belongsTo(config('amethyst.token.data.token-type.model'));
     }
 
     /**
