@@ -35,7 +35,7 @@ class TokenTest extends BaseTest
      */
     protected $route = 'user.token';
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
