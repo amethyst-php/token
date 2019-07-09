@@ -1,8 +1,8 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Http\User;
+namespace Amethyst\Tests\Http\User;
 
-use Railken\Amethyst\Concerns\Auth\User as Model;
+use Amethyst\Concerns\Auth\User as Model;
 
 class User extends Model
 {

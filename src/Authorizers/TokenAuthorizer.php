@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Authorizers;
+namespace Amethyst\Authorizers;
 
 use Illuminate\Support\Collection;
 use Railken\Bag;
@@ -27,7 +27,7 @@ class TokenAuthorizer extends Authorizer
 
     /**
      * @param string                         $action
-     * @param \Railken\Amethyst\Models\Token $entity
+     * @param \Amethyst\Models\Token $entity
      * @param Bag                            $parameters
      *
      * @return Collection

@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Http\User;
+namespace Amethyst\Tests\Http\User;
 
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Api\Support\Testing\TestableBaseTrait;
-use Railken\Amethyst\Fakers\TokenFaker;
-use Railken\Amethyst\Fakers\TokenTypeFaker;
-use Railken\Amethyst\Managers\TokenTypeManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Api\Support\Testing\TestableBaseTrait;
+use Amethyst\Fakers\TokenFaker;
+use Amethyst\Fakers\TokenTypeFaker;
+use Amethyst\Managers\TokenTypeManager;
+use Amethyst\Tests\BaseTest;
 use Symfony\Component\HttpFoundation\Response;
 
 class TokenTest extends BaseTest
@@ -42,7 +42,7 @@ class TokenTest extends BaseTest
         Config::set(['amethyst.authentication.entity' => User::class]);
         Config::set(['auth.providers.users.model' => User::class]);
 
-        Config::set('amethyst.token.data.token.attributes.tokenizable.options.'.User::class, \Railken\Amethyst\Managers\UserManager::class);
+        Config::set('amethyst.token.data.token.attributes.tokenizable.options.'.User::class, \Amethyst\Managers\UserManager::class);
 
         $this->artisan('passport:install');
         $this->artisan('amethyst:user:install');
@@ -85,7 +85,7 @@ class TokenTest extends BaseTest
     protected function getPackageProviders($app)
     {
         return array_merge(parent::getPackageProviders($app), [
-            \Railken\Amethyst\Providers\AuthenticationServiceProvider::class,
+            \Amethyst\Providers\AuthenticationServiceProvider::class,
         ]);
     }
 }

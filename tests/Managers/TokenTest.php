@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Managers;
+namespace Amethyst\Tests\Managers;
 
-use Railken\Amethyst\Fakers\TokenFaker;
-use Railken\Amethyst\Managers\TokenManager;
-use Railken\Amethyst\Tests\BaseTest;
+use Amethyst\Fakers\TokenFaker;
+use Amethyst\Managers\TokenManager;
+use Amethyst\Tests\BaseTest;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
 
 class TokenTest extends BaseTest
