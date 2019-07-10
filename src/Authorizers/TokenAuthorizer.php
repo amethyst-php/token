@@ -26,9 +26,9 @@ class TokenAuthorizer extends Authorizer
     ];
 
     /**
-     * @param string                         $action
+     * @param string                 $action
      * @param \Amethyst\Models\Token $entity
-     * @param Bag                            $parameters
+     * @param Bag                    $parameters
      *
      * @return Collection
      */

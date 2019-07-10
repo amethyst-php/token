@@ -2,10 +2,10 @@
 
 namespace Amethyst\Http\Controllers\User;
 
-use Illuminate\Support\Facades\Config;
 use Amethyst\Api\Http\Controllers\RestManagerController;
 use Amethyst\Api\Http\Controllers\Traits as RestTraits;
 use Amethyst\Managers\TokenManager;
+use Illuminate\Support\Facades\Config;
 
 class TokensController extends RestManagerController
 {

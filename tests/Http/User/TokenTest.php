@@ -2,12 +2,12 @@
 
 namespace Amethyst\Tests\Http\User;
 
-use Illuminate\Support\Facades\Config;
 use Amethyst\Api\Support\Testing\TestableBaseTrait;
 use Amethyst\Fakers\TokenFaker;
 use Amethyst\Fakers\TokenTypeFaker;
 use Amethyst\Managers\TokenTypeManager;
 use Amethyst\Tests\BaseTest;
+use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Response;
 
 class TokenTest extends BaseTest
