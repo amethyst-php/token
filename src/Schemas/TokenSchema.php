@@ -20,7 +20,8 @@ class TokenSchema extends Schema
             Attributes\TextAttribute::make('token')
                 ->setDefault(function ($entity, $attribute) {
                     return $attribute->getManager()->getRepository()->generateToken();
-                }),
+                })
+                ->setRequired(true),
             Attributes\BelongsToAttribute::make('type_id')
                 ->setRelationName('type')
                 ->setRelationManager(TokenTypeManager::class)
