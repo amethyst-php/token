@@ -10,12 +10,5 @@ return [
     'validator'  => Amethyst\Validators\TokenValidator::class,
     'authorizer' => Amethyst\Authorizers\TokenAuthorizer::class,
     'faker'      => Amethyst\Fakers\TokenFaker::class,
-    'manager'    => Amethyst\Managers\TokenManager::class,
-    'attributes' => [
-        'tokenizable' => [
-            'options' => [
-                Amethyst\Models\User::class => Amethyst\Managers\UserManager::class,
-            ],
-        ],
-    ],
+    'manager'    => Amethyst\Managers\TokenManager::class
 ];

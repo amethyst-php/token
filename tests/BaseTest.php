@@ -11,6 +11,8 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     {
         parent::setUp();
 
+        app('amethyst')->pushMorphRelation('token', 'tokenizable', 'user');
+
         $this->artisan('migrate:fresh');
     }
 
@@ -18,6 +20,8 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
     {
         return [
             \Amethyst\Providers\TokenServiceProvider::class,
+            \Amethyst\Providers\UserServiceProvider::class,
+            \Amethyst\Providers\AuthenticationServiceProvider::class,
         ];
     }
 }

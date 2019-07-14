@@ -35,7 +35,7 @@ class TokensController extends RestManagerController
             $request->request->remove('tokenizable_type');
 
             $request->request->add([
-                'tokenizable_type' => Config::get('auth.providers.users.model'),
+                'tokenizable_type' => 'user',
                 'tokenizable_id'   => $this->getUser()->id,
             ]);
 
@@ -62,7 +62,7 @@ class TokensController extends RestManagerController
                 Config::get('amethyst.token.data.token.table').'.type_id'
             )
             ->where('tt.public', 1)
-            ->where('tokenizable_type', Config::get('auth.providers.users.model'))
+            ->where('tokenizable_type', 'user')
             ->where('tokenizable_id', $this->getUser()->id);
     }
 }

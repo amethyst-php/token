@@ -9,6 +9,7 @@ use Amethyst\Managers\TokenTypeManager;
 use Amethyst\Tests\BaseTest;
 use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Response;
+use Amethyst\Tests\Http\User\User;
 
 class TokenTest extends BaseTest
 {
@@ -41,8 +42,6 @@ class TokenTest extends BaseTest
 
         Config::set(['amethyst.authentication.entity' => User::class]);
         Config::set(['auth.providers.users.model' => User::class]);
-
-        Config::set('amethyst.token.data.token.attributes.tokenizable.options.'.User::class, \Amethyst\Managers\UserManager::class);
 
         $this->artisan('passport:install');
         $this->artisan('amethyst:user:install');

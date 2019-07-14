@@ -3,7 +3,6 @@
 namespace Amethyst\Schemas;
 
 use Amethyst\Managers\TokenTypeManager;
-use Illuminate\Support\Facades\Config;
 use Railken\Lem\Attributes;
 use Railken\Lem\Schema;
 
@@ -16,8 +15,6 @@ class TokenSchema extends Schema
      */
     public function getAttributes()
     {
-        $tokenizableConfig = Config::get('amethyst.token.data.token.attributes.tokenizable.options');
-
         return [
             Attributes\IdAttribute::make(),
             Attributes\TextAttribute::make('token')
@@ -28,13 +25,12 @@ class TokenSchema extends Schema
                 ->setRelationName('type')
                 ->setRelationManager(TokenTypeManager::class)
                 ->setRequired(true),
-
-            Attributes\EnumAttribute::make('tokenizable_type', array_keys($tokenizableConfig))
+            Attributes\EnumAttribute::make('tokenizable_type', app('amethyst')->getMorphListable('token', 'tokenizable'))
                 ->setRequired(true),
             Attributes\MorphToAttribute::make('tokenizable_id')
                 ->setRelationKey('tokenizable_type')
                 ->setRelationName('tokenizable')
-                ->setRelations($tokenizableConfig)
+                ->setRelations(app('amethyst')->getMorphRelationable('token', 'tokenizable'))
                 ->setRequired(true),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),

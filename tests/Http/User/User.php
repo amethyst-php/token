@@ -2,7 +2,7 @@
 
 namespace Amethyst\Tests\Http\User;
 
-use Amethyst\Concerns\Auth\User as Model;
+use Amethyst\Models\User as Model;
 
 class User extends Model
 {

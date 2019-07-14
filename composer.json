@@ -6,8 +6,7 @@
     "require": {
         "php": ">=7.1",
         "amethyst/common": "0.1.*",
-        "ramsey/uuid": "^3.8",
-        "amethyst/user": "0.1.*"
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.1",
