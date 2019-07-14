@@ -9,7 +9,6 @@ use Amethyst\Managers\TokenTypeManager;
 use Amethyst\Tests\BaseTest;
 use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Response;
-use Amethyst\Tests\Http\User\User;
 
 class TokenTest extends BaseTest
 {
