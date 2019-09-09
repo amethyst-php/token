@@ -14,7 +14,7 @@ class CreateTokenTypesTable extends Migration
     {
         Schema::create(Config::get('amethyst.token.data.token-type.table'), function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name')->index();
             $table->text('description')->nullable();
             $table->boolean('public')->default(0);
             $table->timestamps();
