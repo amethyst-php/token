@@ -1,6 +1,6 @@
 # amethyst-token
 
-[![Build Status](https://travis-ci.org/amethyst-php/token.svg?branch=master)](https://travis-ci.org/amethyst-php/token)
+[![Action Status](https://github.com/amethyst-php/token/workflows/test/badge.svg)](https://github.com/amethyst-php/token/actions)
 
 [Amethyst](https://github.com/amethyst-php/amethyst) package.
 
