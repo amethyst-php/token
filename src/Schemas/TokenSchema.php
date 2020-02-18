@@ -26,12 +26,12 @@ class TokenSchema extends Schema
                 ->setRelationName('type')
                 ->setRelationManager(TokenTypeManager::class)
                 ->setRequired(true),
-            Attributes\EnumAttribute::make('tokenizable_type', app('amethyst')->getMorphListable('token', 'tokenizable'))
+            Attributes\EnumAttribute::make('tokenizable_type', app('amethyst')->getDataNames())
                 ->setRequired(true),
             Attributes\MorphToAttribute::make('tokenizable_id')
                 ->setRelationKey('tokenizable_type')
                 ->setRelationName('tokenizable')
-                ->setRelations(app('amethyst')->getMorphRelationable('token', 'tokenizable'))
+                ->setRelations(app('amethyst')->getDataManagers())
                 ->setRequired(true),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
